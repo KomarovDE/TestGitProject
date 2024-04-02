@@ -19,8 +19,8 @@ def test_list_users():
         assert item['avatar'] == f'{BASE_URL}img/faces/{item["id"]}-image.jpg'  # проверка avatar
 
 
-def single_user():
-    response = httpx.get(BASE_URL + LIST_USERS)
+def test_single_user():
+    response = httpx.get(BASE_URL + SINGLE_USER)
     assert response.status_code == 200  # проверка на верность условия
 
     users_data = response.json()['data']
@@ -28,7 +28,6 @@ def single_user():
     assert users_data['email'].endswith(EMAIL_ENDS)  # проверка email
     assert users_data['avatar'] == f'{BASE_URL}img/faces/{users_data["id"]}-image.jpg'  # проверка avatar
 
-def USER_NOT_FOUND():
-    response = httpx.get(BASE_URL + LIST_USERS)
+def test_user_not_found():
+    response = httpx.get(BASE_URL + USER_NOT_FOUND)
     assert response.status_code == 404  # проверка на верность условия
-
