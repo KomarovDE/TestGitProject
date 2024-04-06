@@ -8,6 +8,7 @@ RESOURCE_SINGLE = 'api/unknown/2'
 RESOURCE_NOT_FOUND = 'api/unknown/23'
 COLOR_START = '#'
 
+
 def test_list_resource():
     response = httpx.get(BASE_URL + LIST_RESOURCE)
     assert response.status_code == 200
@@ -18,6 +19,7 @@ def test_list_resource():
         assert item['year'] >= 2000  # проверка year
         assert item['id'] >= 1 # проверка id
 
+
 def test_resource_single():
     response = httpx.get(BASE_URL + RESOURCE_SINGLE)
     assert response.status_code == 200
@@ -25,7 +27,9 @@ def test_resource_single():
     test_resource_single = response.json()['data']
     validate(test_resource_single, RESOURCE_DATA_SCHEMA)
     assert test_resource_single['color'].startswith(COLOR_START) # проверка цвета
-    assert test_resource_single['id'] <= 7
+    assert test_resource_single['id'] == 2
+
+
 def test_resource_not_found():
     response = httpx.get(BASE_URL + RESOURCE_NOT_FOUND)
     assert response.status_code == 404
