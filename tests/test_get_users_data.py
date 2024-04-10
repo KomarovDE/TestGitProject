@@ -36,12 +36,15 @@ def test_single_user():
 
     users_data = response.json()['data']
     validate(users_data, USER_DATA_SCHEMA)
-    assert users_data['email'].endswith(EMAIL_ENDS)  # проверка email
-    assert users_data['avatar'] == f'{BASE_URL}img/faces/{users_data["id"]}-image.jpg'  # проверка avatar
+    with allure.step(f'Проверяем окончание email {EMAIL_ENDS}'):
+        assert users_data['email'].endswith(EMAIL_ENDS)  # проверка email
+    with allure.step(f'Проверяем ссылку на аватар'):
+        assert users_data['avatar'] == f'{BASE_URL}img/faces/{users_data["id"]}-image.jpg'  # проверка avatar
 
 
 @allure.suite('Получение различных данных пользователей')
 @allure.title('попытка получения данных по несуществующему пользователю')
 def test_user_not_found():
     response = httpx.get(BASE_URL + USER_NOT_FOUND)
-    assert response.status_code == 404  # проверка на верность условия
+    with allure.step(f'Проверяем доступ к ресурсу'):
+        assert response.status_code == 404  # проверка на верность условия
