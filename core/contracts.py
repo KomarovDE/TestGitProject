@@ -1,5 +1,5 @@
 USER_DATA_SCHEMA = {
-    "type": "object",
+    "type": "object", # бывает еще array - массив, если число - number, если текст - string.
     "properties": {
         "id": {"type": "number"},
         "email": {"type": "string"},
