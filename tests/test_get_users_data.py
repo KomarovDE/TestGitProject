@@ -43,7 +43,7 @@ def test_single_user():
 
 
 @allure.suite('Получение различных данных пользователей')
-@allure.title('попытка получения данных по несуществующему пользователю')
+@allure.title('Попытка получения данных по несуществующему пользователю')
 def test_user_not_found():
     response = httpx.get(BASE_URL + USER_NOT_FOUND)
     with allure.step(f'Проверяем доступ к ресурсу'):

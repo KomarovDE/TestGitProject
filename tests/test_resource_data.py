@@ -24,7 +24,8 @@ def test_list_resource():
         with allure.step(f'Проверка {id}'):
             assert item['id'] >= 1 # проверка id
 
-
+@allure.suite('Получение различных данных ресурса')
+@allure.title('Получение одного ресурса')
 def test_resource_single():
     response = httpx.get(BASE_URL + RESOURCE_SINGLE)
     assert response.status_code == 200
@@ -36,7 +37,8 @@ def test_resource_single():
     with allure.step(f'Проверка {id}'):
         assert test_resource_single['id'] == 2
 
-
+@allure.suite('Получение различных данных ресурса')
+@allure.title('Попытка получения данных по несуществующему рес-су')
 def test_resource_not_found():
     response = httpx.get(BASE_URL + RESOURCE_NOT_FOUND)
     with allure.step(f'Проверяем доступ к ресурсу'):
