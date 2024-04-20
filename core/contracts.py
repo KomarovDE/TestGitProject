@@ -33,7 +33,7 @@ CREATED_USER_SCHEMA = {
     "required": ["name", "job", "id", "createdAt"]
 }
 
-PUT_UPDATED_USER_SCHEMA = {
+UPDATED_USER_SCHEMA = {
     "type": "object",
     "properties": {
         "name": {"type": "string"},
@@ -43,12 +43,19 @@ PUT_UPDATED_USER_SCHEMA = {
     "required": ["name", "job", "updatedAt"]
 }
 
-PATCH_UPDATED_USER_SCHEMA = {
+SUCCESSFUL_REGISTERED_USER_SCHEMA = {
     "type": "object",
     "properties": {
-        "name": {"type": "string"},
-        "job": {"type": "string"},
-        "updatedAt": {"type": "string"},
+        "id": {"type": "number"},
+        "token": {"type": "string"},
     },
-    "required": ["name", "job", "updatedAt"]
+    "required": ["id", "token"]
+}
+
+ERROR_RESPONSE_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "error": {"type": "string"},
+    },
+    "required": ["error"]
 }
