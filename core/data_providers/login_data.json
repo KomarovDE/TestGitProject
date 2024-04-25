@@ -1,0 +1,18 @@
+[
+  {
+    "email": "michael.lawson@reqres.in",
+    "password": "P@$$w0rd"
+  },
+  {
+    "email": "michael.lawson@reqres.in",
+    "password": ""
+  },
+  {
+    "email": "",
+    "password": "P@$$w0rd"
+  },
+  {
+    "email": "",
+    "password": ""
+  }
+]

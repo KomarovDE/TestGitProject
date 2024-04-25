@@ -4,8 +4,9 @@ from jsonschema import validate
 from core.contracts import CREATED_USER_SCHEMA
 from core.contracts import UPDATED_USER_SCHEMA
 import allure
+import json
 
-BASE_URL = 'https://reqres.in/api/users'
+BASE_URL = 'https://reqres.in/api/users/'
 USER_ID = '2'
 
 
@@ -131,7 +132,7 @@ def test_update_user_with_name_and_job():
     print(body['name'])
     print(body['job'])
 
-    response = httpx.patch(BASE_URL + USER_ID, json=body)
+    response = httpx.patch(BASE_URL + USER_ID, json=body, timeout=2)
     response_json = response.json()
     current_date = str(datetime.datetime.utcnow())
     creation_date = response_json['updatedAt'].replace('T', ' ')

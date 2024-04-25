@@ -52,6 +52,14 @@ SUCCESSFUL_REGISTERED_USER_SCHEMA = {
     "required": ["id", "token"]
 }
 
+SUCCESSFUL_LOGIN_USER_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "token": {"type": "string"},
+    },
+    "required": ["token"]
+}
+
 ERROR_RESPONSE_SCHEMA = {
     "type": "object",
     "properties": {
@@ -59,3 +67,4 @@ ERROR_RESPONSE_SCHEMA = {
     },
     "required": ["error"]
 }
+
